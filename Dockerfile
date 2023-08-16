@@ -47,7 +47,9 @@ RUN apt-get update \
     && curl -sS https://getcomposer.org/installer | php \
     && mv composer.phar /usr/local/bin/composer \
     # Enable URL rewriting using .htaccess
-    && a2enmod rewrite
+    && a2enmod rewrite \
+    # Enable SSL Mod
+    && a2enmod ssl
 
 RUN sed -i 's/KeepAliveTimeout 5/KeepAliveTimeout 10/' /etc/apache2/apache2.conf
 
